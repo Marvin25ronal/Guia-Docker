@@ -64,5 +64,6 @@ docker exec -it website bash
 docker build archivo
 
 //subir una imagen
+docker build -t user/img
 
-docker push img
+docker push user/img
