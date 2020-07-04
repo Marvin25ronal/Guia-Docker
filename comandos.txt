@@ -1,0 +1,68 @@
+//Para descargar una imagen
+docker pull "nombre de la imagen"
+
+//Para ver los contenedores en historial
+docker ps -a
+
+//Para ver el listado de los contenedores
+docker ps
+
+//Para correr la imagen y entrar a la consola 
+docker run -it "ubuntu" bash
+
+
+//Si existe algun error al correrlo como que es necesario wintpy se corre
+winpty docker run -it ubuntu bash
+
+//para ver las imagenes que tengo descargadas
+docker images
+
+//eliminar una imagen
+docker rmi "ubuntu"
+
+//eliminar un container 
+docker rm "ID" 
+docker rm "name"
+
+//Para arrancar un container stop
+docker start "ID"
+
+//para parar un container start
+docker stop "ID"
+
+//enlazar puertos
+docker run -p "puertoexterno":"puertointerno" nombre
+
+//regresar el mando
+docker run -p 8080:80 -d nginx
+
+//listado de los contenedores
+docker ps -aq
+
+//remover todos los contenedores con la lista
+docker rm $(docker ps -aq)
+
+//agregar un nombre con --name
+docker run -d -p 3306:3306 --name "nombre"
+
+//forzar la instruccion con -f
+docker rm $(docker ps -aq) -f
+
+//para pasar variables es con -e
+docker run -d -p 3307:3306 --name mydatabase -e MYSQL_ROOT_PASSWORD=contrasena mysql
+
+//Cargar archivos  origen:destino
+
+docker run -d -p 80:80 --name website -v /home/:/usr/share/nginx/html:ro nginx
+
+//para conectarme es con 
+docker exec -it website bash
+
+
+//para crear docker file
+
+docker build archivo
+
+//subir una imagen
+
+docker push img

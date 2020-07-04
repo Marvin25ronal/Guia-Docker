@@ -1,0 +1,8 @@
+//para crear una llave es con ssh-generate.exe
+ssh-keygen.exe
+
+//para acceder a la llave ingresando la ip
+ ssh -i mongo marvi@35.192.187.182
+
+ ssh -i "llavepublica" "usuario"@"ip"
+
