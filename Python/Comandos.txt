@@ -1,0 +1,1 @@
+para ver los paquetes en python es pip freeze

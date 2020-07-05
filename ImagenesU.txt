@@ -1,0 +1,4 @@
+alpine--una imagen de linux muy basica
+ubuntu--una imagen de sistema operativo de ubuntu
+nginx-- un servidor web como apache
+apche--servidor web
