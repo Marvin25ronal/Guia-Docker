@@ -1,1 +1,4 @@
 para ver los paquetes en python es pip freeze
+
+para pasar los requerimientos
+pip freeze> requirements.txt
