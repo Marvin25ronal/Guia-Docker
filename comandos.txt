@@ -67,3 +67,5 @@ docker build archivo
 docker build -t user/img
 
 docker push user/img
+
+
