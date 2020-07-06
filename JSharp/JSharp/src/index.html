@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>JSharp</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta charset=utf-8 />
+    <title>Cytoscape with Dagre Layout</title>
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <script src="https://cdn.rawgit.com/cytoscape/cytoscape.js/v2.7.16/dist/cytoscape.js"></script>
+    <script src="https://cdn.rawgit.com/cpettitt/dagre/v0.7.3/dist/dagre.js"></script>
+    <script src="https://cdn.rawgit.com/cytoscape/cytoscape.js-dagre/1.4.0/cytoscape-dagre.js"></script>
+</head>
+
+<body>
+    <app-root></app-root>
+</body>
+<script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', function () { // on dom ready
+        var cy = cytoscape({
+            container: document.querySelector('#cy'),
+
+
+            layout: {
+                name: 'dagre',
+                rankDir:localStorage.getItem("position")
+            },
+
+            style: cytoscape.stylesheet()
+                .selector('node')
+                .css({
+                    'shape': 'data(faveShape)',
+                    'width': 'mapData(weight, 40, 80, 20, 60)',
+                    'content': 'data(name)',
+                    'text-valign': 'center',
+                    'text-outline-width': 2,
+                    'text-outline-color': 'data(faveColor)',
+                    'background-color': 'data(faveColor)',
+                    'color': '#fff',
+
+                })
+                .selector(':selected')
+                .css({
+                    'border-width': 3,
+                    'border-color': '#333'
+                })
+                .selector('edge')
+                .css({
+                    'curve-style': 'bezier',
+                    'opacity': 0.666,
+                    'width': 'mapData(strength, 70, 100, 2, 6)',
+                    'target-arrow-shape': 'triangle',
+                    'source-arrow-shape': 'circle',
+                    'line-color': 'data(faveColor)',
+                    'source-arrow-color': 'data(faveColor)',
+                    'target-arrow-color': 'data(faveColor)'
+                })
+                .selector('edge.questionable')
+                .css({
+                    'line-style': 'dotted',
+                    'target-arrow-shape': 'diamond'
+                })
+                .selector('.faded')
+                .css({
+                    'opacity': 0.25,
+                    'text-opacity': 0
+                }),
+
+            elements: {
+                nodes: obtenerdatos(),
+                edges: obtenerenlace(),
+            }
+        });
+
+        cy.on('tap', 'node', function (e) {
+            var node = e.cyTarget;
+            var neighborhood = node.neighborhood().add(node);
+
+            cy.elements().addClass('faded');
+            neighborhood.removeClass('faded');
+        });
+
+        cy.on('tap', function (e) {
+            if (e.cyTarget === cy) {
+                cy.elements().removeClass('faded');
+            }
+        });
+
+    }); // on dom ready
+    function obtenerdatos() {
+
+        return JSON.parse(localStorage.getItem("datos"));
+    }
+    function obtenerenlace() {
+        return JSON.parse(localStorage.getItem("enlaces"));
+    }
+
+</script>
+<style type="text/css">
+    body {
+        font: 14px helvetica neue, helvetica, arial, sans-serif;
+    }
+
+    #cy {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+</style>
+
+</html>

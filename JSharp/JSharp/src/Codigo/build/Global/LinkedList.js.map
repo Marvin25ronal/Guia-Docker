@@ -1,0 +1,1 @@
+{"version":3,"file":"LinkedList.js","sourceRoot":"","sources":["../../Global/LinkedList.ts"],"names":[],"mappings":";;AAAA,iEAAoD;AAEpD;IAAA;IAOA,CAAC;IANG,oCAAoB,GAApB,UAAqB,GAAG;QACpB,QAAQ,GAAG,EAAE;YACT,KAAK,CAAC;gBACF,OAAO,IAAI,mCAAU,EAAiB,CAAC;SAC9C;IACL,CAAC;IACL,YAAC;AAAD,CAAC,AAPD,IAOC;AAPY,sBAAK"}

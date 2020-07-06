@@ -1,0 +1,9 @@
+<div class="padre">
+    <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+        <mat-tab *ngFor="let tab of tabs; let index = index;" [label]="tab">
+            {{addEditor(editor,index)}}
+            <app-text-editor #editor [numbers]="numbers"></app-text-editor>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>

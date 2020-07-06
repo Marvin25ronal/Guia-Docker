@@ -1,0 +1,29 @@
+<div class="padre">
+  <button mat-button class="btn btn-primary" [matMenuTriggerFor]="menu">Archivo</button>
+  <button mat-button class="btn btn-primary" [matMenuTriggerFor]="menu1">Pestañas</button>
+  <button mat-button class="btn btn-primary" [matMenuTriggerFor]="menu2">Compilar</button>
+  <button mat-button class="btn btn-primary" [matMenuTriggerFor]="menu3">Reportes</button>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Abrir</button>
+  <button mat-menu-item>Guardar</button>
+  <button mat-menu-item>Guardar Como</button>
+</mat-menu>
+<mat-menu #menu1="matMenu">
+  <button mat-menu-item (click)="funcionCrear()">Crear Pestañas</button>
+  <button mat-menu-item (click)="funcionRemover()">Remover Pestañas</button>
+</mat-menu>
+<mat-menu #menu2="matMenu">
+  <button mat-menu-item (click)="funcionTraducir()">Codigo 3D</button>
+  <button mat-menu-item (click)="funcionMirilla()">Optimizar Mirilla</button>
+</mat-menu>
+<mat-menu #menu3="matMenu">
+  <button mat-menu-item (click)="funcionMostrarArbol()">Arbol</button>
+  <button mat-menu-item (click)="funcionMostrarTabla()">Tabla de simbolos</button>
+  <button mat-menu-item (click)="funcionMostrarMirilla()">Reporte de Mirilla</button>
+  <button mat-menu-item (click)="funcionMostrarBloques()">Reporte de Bloques</button>
+  <button mat-menu-item (click)="funcionReporteErrores()">Reporte de Errores</button>
+  
+</mat-menu>
+
