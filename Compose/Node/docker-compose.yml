@@ -1,0 +1,24 @@
+version: "3"
+
+services: 
+    web:
+        container_name: nodeapp
+        restart: always
+        build: .
+        ports: 
+            - "5000:3000"
+        links: 
+            - mongo
+        volumes: 
+            - . :/usr/src/app
+    mongo:
+        container_name: mongodatabase
+        image: mongo
+        ports: 
+            - "27018:27017"
+        logging: 
+            driver: none
+        volumes: 
+            - ../Database :/data/db 
+
+        
