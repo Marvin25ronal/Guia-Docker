@@ -1,6 +1,18 @@
 version: "3"
 
 services: 
+    react1:
+        container_name: react-webpack
+        build: C:\Users\marvi\OneDrive\Escritorio\taller-React-1
+        
+        ports: 
+            - "7000:7000"
+        links: 
+            - web
+        
+        #volumes: 
+         #   - C:\Users\marvi\OneDrive\Escritorio\taller-React-1:/app
+        
     web:
         container_name: nodeapp
         restart: always
@@ -18,7 +30,10 @@ services:
             - "27018:27017"
         logging: 
             driver: none
-        volumes: 
-            - ../Database :/data/db 
+        #volumes:  esta opcion habilitarla si se encuentra en linux ya que tira problamas con los permisos para grabar archivos
+        #    - ../Database:/data/db 
+    
+        
+
 
         

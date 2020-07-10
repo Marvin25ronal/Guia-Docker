@@ -7,3 +7,5 @@ mongoose.connect('mongodb://mongo/prueba',{
     .then(db=>console.log('Db is connected to ',db.connection.host))
     .catch(err=>console.error(err))
 
+module.exports=mongoose
+
