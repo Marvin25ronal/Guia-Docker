@@ -1,18 +1,18 @@
-version: "3"
+version: "3.8"
 
+    
 services: 
     react1:
         container_name: react-webpack
-        build: C:\Users\marvi\OneDrive\Escritorio\taller-React-1
-        
+        image: marvin25/react-webpack
         ports: 
             - "7000:7000"
+        depends_on: 
+            - web
         links: 
             - web
-        
         #volumes: 
-         #   - C:\Users\marvi\OneDrive\Escritorio\taller-React-1:/app
-        
+        #    - C:\Users\marvi\OneDrive\Escritorio\taller-React-1:/app
     web:
         container_name: nodeapp
         restart: always
@@ -21,6 +21,8 @@ services:
             - "5000:3000"
         links: 
             - mongo
+        networks:  
+            - mynet
         volumes: 
             - . :/usr/src/app
     mongo:
@@ -30,10 +32,22 @@ services:
             - "27018:27017"
         logging: 
             driver: none
+        networks: 
+            - mynet
         #volumes:  esta opcion habilitarla si se encuentra en linux ya que tira problamas con los permisos para grabar archivos
         #    - ../Database:/data/db 
     
-        
+    next:
+        container_name: nextjs-page
+        build: C:\Users\marvi\OneDrive\Escritorio\Prueba-NextJS
+        ports: 
+            - "7100:7100"
+        networks: 
+            - mynet
+       
+        volumes: 
+            - C:\Users\marvi\OneDrive\Escritorio\Prueba-NextJS:/usr/src/app
 
-
+networks: 
+    mynet:
         
