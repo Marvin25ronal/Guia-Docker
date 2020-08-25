@@ -92,7 +92,7 @@ router.get('/prod', (req, res) => {
             descripcion: 'La descripcion del producto',
             precio: '772.281'
         },
-         {
+        {
             id: 1028,
             categoria: 'Category 7',
             nombre: 'Product 20',
@@ -100,7 +100,7 @@ router.get('/prod', (req, res) => {
             descripcion: 'La descripcion del producto',
             precio: '772.281'
         },
-         {
+        {
             id: 1029,
             categoria: 'Category 7',
             nombre: 'Product 20',
@@ -117,6 +117,17 @@ var corsOptions = {
     origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+router.post('/login', cors(corsOptions), (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.json({ msg: true, tipo: "Admin", user: 125, name: "marvin" });
+})
 router.post('/insertar', cors(corsOptions), (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     // Request methods you wish to allow
