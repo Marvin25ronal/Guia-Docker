@@ -158,6 +158,9 @@ router.post('/login', cors(corsOptions), (req, res) => {
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
+    if(req.body.img!=undefined){
+        //console.log(req.body.img);
+    }
     res.json({ msg: true, tipo: "Admin", user: 125, name: "marvin" });
 })
 router.post('/registrarPedido',cors(corsOptions),(req,res)=>{
