@@ -17,6 +17,27 @@ router.get('/users', (req, res) => {
 
     res.json({ message: 'hola' })
 })
+router.get('/prodi',(req,res)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    let arr = 
+        {
+            id: 1020,
+            categoria: 'Category 7',
+            nombre: 'Product 20',
+            imagen: 'https://picsum.photos/id/237/200/300',
+            descripcion: 'La descripcion del producto',
+            precio: '772.281'
+        }
+    
+      res.json(arr)
+})
 router.get('/prod', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     // Request methods you wish to allow
@@ -128,6 +149,27 @@ router.post('/login', cors(corsOptions), (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.json({ msg: true, tipo: "Admin", user: 125, name: "marvin" });
 })
+router.post('/ingrid',cors(corsOptions),(req,res)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    orden={
+		id:1,
+		tipo_pedido:"a",
+		id_cliente:"b",
+		estado:"e",
+		fecha:"c"
+	}
+	//ordenes.push(orden);
+	//res.send(JSON.stringify(orden));
+    res.json(orden);
+})
+
 router.post('/insertar', cors(corsOptions), (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     // Request methods you wish to allow
