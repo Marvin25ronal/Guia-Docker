@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 var cors = require('cors')
 
 
-
+let pedidos=[];
 router.get('/users', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     // Request methods you wish to allow
@@ -37,6 +37,17 @@ router.get('/prodi',(req,res)=>{
         }
     
       res.json(arr)
+})
+router.get('/pedidosOrden',(req,res)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.json([{"id_pedido":4,"id_producto":"23","id_orden":"2","cantidad":"5"},{"id_pedido":5,"id_producto":"23","id_orden":"2","cantidad":"5"},{"id_pedido":6,"id_producto":"23","id_orden":"2","cantidad":"5"},{"id_pedido":7,"id_producto":"23","id_orden":"2","cantidad":"5"}])
 })
 router.get('/prod', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -149,6 +160,25 @@ router.post('/login', cors(corsOptions), (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.json({ msg: true, tipo: "Admin", user: 125, name: "marvin" });
 })
+router.post('/registrarPedido',cors(corsOptions),(req,res)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    pedido={
+		id_pedido:pedidos.length+1,
+		id_producto:req.body.id_producto,
+		id_orden:req.body.id_orden,
+		cantidad:req.body.cantidad
+	}
+	pedidos.push(pedido);
+	res.send("pedido registrado" + JSON.stringify(pedido));
+})
+
 router.post('/ingrid',cors(corsOptions),(req,res)=>{
     res.setHeader('Access-Control-Allow-Origin', '*');
     // Request methods you wish to allow
